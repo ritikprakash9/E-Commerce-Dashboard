@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./components/Nav";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
+import Signup from "./components/SignUp";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -31,9 +32,11 @@ function App() {
             path="/profile"
             element={<h1 className="nav-desc">Profile Component</h1>}
           />
+
+          <Route path="/signup" element={<Signup/>} />
         </Routes>
       </BrowserRouter>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
