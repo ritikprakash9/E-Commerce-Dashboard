@@ -1,0 +1,21 @@
+.nav-bar{
+    background-color: rgb(42, 94, 115);
+    padding: 20px;
+    display: flex;
+    list-style: none;
+    
+}
+
+.nav-bar li{
+    padding: 0 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.nav-bar a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-desc{
+    
+}

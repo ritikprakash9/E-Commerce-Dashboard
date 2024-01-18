@@ -1,0 +1,12 @@
+.footer {
+    background-color: rgb(42, 94, 115);
+    position: absolute;
+    width: 96.9vw;
+    bottom: 0;
+    padding: 20px;
+}
+
+.footer h1{
+    text-align: center;
+    color: white;
+}
