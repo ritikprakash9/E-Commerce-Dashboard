@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-
+import {useNavigate} from 'react-router-dom'
 const Signup = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [passoword, setPassword] = useState("");
+    const [password, setPassword] = useState("");
 
-    const collectData = () => { console.log(name, email, passoword)};
+    const navigate = useNavigate();
+
+    const collectData = async () =>{
+        let result = await fetch('http://localhost:5000/register', {
+            method: 'post',
+            body: JSON.stringify({name, email, password}),
+            headers: {
+                'Content-type' : 'application/json'
+            },
+        });
+
+        result = await result.json();
+        console.warn(result);
+
+        if(result){
+            navigate('/');
+        }
+    }
+
     return (
         <div >
             <div className="registeration-page">
@@ -26,7 +44,7 @@ const Signup = () => {
                     placeholder="Enter Your E-Mai ID"
                 ></input>
                 <input
-                    onChange={(e)=> setPassword(e.target.passoword)}
+                    onChange={(e)=> setPassword(e.target.value)}
                     className="inpBox"
                     type="password"
                     placeholder="Enter Your Password"
