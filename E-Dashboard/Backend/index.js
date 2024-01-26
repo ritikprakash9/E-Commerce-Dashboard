@@ -2,22 +2,17 @@ const express = require('express');
 
 const app = express();
 
-// => Mongo DB Connection 
+require('./db/config');
 
-const mongooes = require('mongoose');
+const user = require('./db/users');
+const users = require('./db/users');
 
-const connectDB = async()=>{
-    mongooes.connect('mongodb://localhost:27017/College');
-    const studentSchema = new mongooes.Schema({});
-    const student = mongooes.model('Student', studentSchema);
-    const data = student.find();
-    console.warn(data);
-}
+app.use(express.json());
+app.post("/register", async (req, res)=>{
 
-connectDB();
-// app.get('/', (req, res)=>{
-//     res.send("App is working...");
-// })
+    let user = new users(req.body);
+    let result = await user.save();
+    res.send(result);
+})
 
-
-// app.listen(5000);
+app.listen(5000);
