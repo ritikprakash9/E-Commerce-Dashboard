@@ -27,7 +27,7 @@ function App() {
             element={<h1 className="nav-desc">Update Product Component</h1>}
           />
           <Route
-            path="logout"
+            path="/logout"
             element={<h1 className="nav-desc">Logout Component</h1>}
           />
           <Route
