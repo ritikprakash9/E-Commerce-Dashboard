@@ -20,10 +20,8 @@ const Signup = () => {
 
         result = await result.json();
         console.warn(result);
-
-        if(result){
-            navigate('/');
-        }
+        localStorage.setItem("user", JSON.stringify(result));
+        navigate('/');
     }
 
     return (
