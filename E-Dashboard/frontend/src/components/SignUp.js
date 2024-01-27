@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import "./SignUp.css";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 const Signup = () => {
 
     const [name, setName] = useState("");
@@ -9,12 +9,12 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    const collectData = async () =>{
+    const collectData = async () => {
         let result = await fetch('http://localhost:5000/register', {
             method: 'post',
-            body: JSON.stringify({name, email, password}),
+            body: JSON.stringify({ name, email, password }),
             headers: {
-                'Content-type' : 'application/json'
+                'Content-type': 'application/json'
             },
         });
 
@@ -23,6 +23,13 @@ const Signup = () => {
         localStorage.setItem("user", JSON.stringify(result));
         navigate('/');
     }
+
+    useEffect(() => {
+        const auth = localStorage.getItem("user");
+        if (auth) {
+            navigate('/');
+        }
+    })
 
     return (
         <div >
@@ -36,13 +43,13 @@ const Signup = () => {
                     placeholder="Enter Your Name"
                 ></input>
                 <input
-                    onChange={(e)=> setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="inpBox"
                     type="email"
                     placeholder="Enter Your E-Mai ID"
                 ></input>
                 <input
-                    onChange={(e)=> setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="inpBox"
                     type="password"
                     placeholder="Enter Your Password"
